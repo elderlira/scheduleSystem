@@ -30,6 +30,16 @@ export default {
     }
   },
   methods: {
+    adicionarTarefa() {
+      if(this.inicial === '' && this.final==='') {
+        alert('informe o periodo da semana')
+        return
+      }
+      if(this.tarefa === '') {
+        alert('é necessario preencher o campo tarefa')
+        return
+      }
+    },
   limparLis() {
     this.tarefas = []
     }
