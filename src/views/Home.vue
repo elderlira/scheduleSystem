@@ -1,14 +1,16 @@
 <template>
   <div class="home">
+    <schedule />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
+import schedule from '../components/ScheduleForm.vue'
 
 export default {
   name: 'Home',
   components: {
+    schedule
   }
 }
 </script>
