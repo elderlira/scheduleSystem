@@ -5,8 +5,17 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    dataStorage: {
+      dataInicial: '',
+      dataFinal: ''
+    }
   },
   mutations: {
+    GET_PERIODS_DATE(state, payload) {
+      console.log('armazenado')
+      state.dataStorage.dataInicial = payload.inicial,
+      state.dataStorage.dataFinal = payload.final
+    }
   },
   actions: {
   },
