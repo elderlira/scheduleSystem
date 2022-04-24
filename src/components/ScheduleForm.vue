@@ -12,6 +12,21 @@
       <button class="add" @click="adicionarTarefa">Add</button>
       <button class="clear" @click="limparLis">Clear</button>
     </div>
+    <div v-if="tarefas.length === 0 ">
+      <p class="normal">You don`t have any task</p>
+    </div>
+    <div v-else>
+      <p>You have: {{tarefas.length}} task from {{ inicial }} to {{ final }}</p>
+      <ol>
+        <li
+          :class="tarefa.length === 0 ? 'normal' : 'ativa' "
+          v-for="(tarefa, index) in tarefas" 
+          :key="index">
+          {{tarefa.nome}} - {{tarefa.data}}
+        <button @click="tarefas.splice(index, 1)">Remove</button>
+        </li>
+      </ol>
+    </div>
   </div>
 </template>
 
