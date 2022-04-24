@@ -54,6 +54,25 @@ export default {
         alert('é necessario preencher o campo tarefa')
         return
       }
+      function formatDate(date) {
+        date = new Date(date)
+        const day = date.getDate() +1
+        const month = date.getMonth()
+        const year = date.getFullYear()
+
+        return `${day}/${month}/${year}`
+      }
+      this.final = formatDate(this.final);
+      this.inicial = formatDate(this.inicial)
+      this.tarefas = [
+        ...this.tarefas, {
+         nome: this.tarefa, 
+         data: formatDate(new Date())
+        }
+         ]
+      this.tarefa = ''
+      this.inicial = ''
+      this.final = ''
     },
   limparLis() {
     this.tarefas = []
