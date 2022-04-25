@@ -8,9 +8,10 @@
       </p>
     </div>
     <div>
-      <input type="text" name="" id="" v-model="tarefa" >       
+      <input type="text" name="" id="" v-model="tarefa" placeholder="Insert your task">       
       <button class="add" @click="adicionarTarefa">Add</button>
       <button class="clear" @click="limparLis">Clear</button>
+      <button class="clearAll" @click="clearAll">Clear All</button>
     </div>
     <div v-if="tarefas.length === 0 ">
       <p class="normal">You don`t have any task</p>
@@ -95,6 +96,11 @@ export default {
     },
   limparLis() {
     this.tarefas = []
+    },
+    clearAll() {
+      this.tarefa = ''
+      this.inicial = ''
+      this.final = ''
     }
   },
   mounted() {
@@ -129,8 +135,10 @@ span {
   font-weight: bolder;
 }
 
-li {
-  list-style-type: none;
+.clearAll {
+background: rgba(204, 103, 8, 0.788);
+color: #fff;
+font-weight: bold;
 }
 
 .normal {
