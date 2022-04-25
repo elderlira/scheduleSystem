@@ -12,7 +12,6 @@ export default new Vuex.Store({
   },
   mutations: {
     GET_PERIODS_DATE(state, payload) {
-      console.log('armazenado')
       state.dataStorage.dataInicial = payload.inicial,
       state.dataStorage.dataFinal = payload.final
     }
