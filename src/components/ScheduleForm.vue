@@ -1,6 +1,5 @@
 <template>
   <div class="home container">
-    <!-- {{ dataStorage }} -->
     <h1 v-text="title"></h1>
     <div class="inputs">
       <p>
@@ -52,7 +51,7 @@ export default {
   methods: {
     ...mapMutations(['GET_PERIODS_DATE']),
     adicionarTarefa() {
-      if(this.inicial === '' && this.final==='') {
+      if(this.inicial === '' && this.final === '') {
         alert('informe o periodo da semana')
         return
       }
@@ -61,23 +60,28 @@ export default {
         return
       }
       function formatDate(date) {
-        date = new Date(date)
-        const day = date.getDate() +1
-        const month = date.getMonth()
+        if (typeof date === 'string') {
+          date = new Date(...date.split('-'))
+        } else {
+          date = new Date(date)
+        }
+
+        const day = date.getDate()
+        const month = date.getMonth() + 1
         const year = date.getFullYear()
 
         return `${day}/${month}/${year}`
       }
-      this.final = formatDate(this.final);
-      this.inicial = formatDate(this.inicial)
+      const final = formatDate(this.final)
+      const inicial = formatDate(this.inicial)
       this.tarefas = [
         ...this.tarefas, {
          nome: this.tarefa, 
          data: formatDate(new Date())
         }]
        this.GET_PERIODS_DATE({
-        inicial: this.inicial,
-        final: this.final
+        inicial: inicial,
+        final: final
       })
       this.tarefa = ''
     },
@@ -93,6 +97,7 @@ export default {
 </script>
 
 <style>
+
 .inputs {
   /* background: blueviolet; */
   padding: 10px 0;
@@ -103,6 +108,7 @@ span {
   margin-right: 4px;
   margin-left: 12px;
 }
+
 .add {
   background: lightblue;
   color: black;
@@ -115,17 +121,19 @@ span {
   font-weight: bolder;
 }
 
-
 li {
   list-style-type: none;
 }
+
 .normal {
   color: black;
   font-weight: bold;
   font-size: 20px;
 }
+
 .ativa {
   color: rgba(39, 185, 204, 0.856);
   font-size: 30px;
 }
+
 </style>
