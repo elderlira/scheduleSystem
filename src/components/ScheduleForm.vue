@@ -17,15 +17,23 @@
     </div>
     <div v-else>
       <p>You have: {{tarefas.length}} task from {{ dataStorage.dataInicial }} to {{ dataStorage.dataFinal }}</p>
-      <ol>
-        <li
-          :class="tarefa.length === 0 ? 'normal' : 'ativa' "
-          v-for="(tarefa, index) in tarefas" 
+      <table class="container">
+        <thead>
+          <tr>
+            <td>Nome</td>
+            <td>Data</td>
+            <td></td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(tarefa, index) in tarefas" 
           :key="index">
-          {{tarefa.nome}} - {{tarefa.data}}
-        <button @click="tarefas.splice(index, 1)">Remove</button>
-        </li>
-      </ol>
+            <td>{{tarefa.nome}}</td>
+            <td>{{tarefa.data}}</td>
+            <td><button @click="tarefas.splice(index, 1)">Remove</button></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </template>
