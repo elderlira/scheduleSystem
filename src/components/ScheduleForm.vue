@@ -9,9 +9,9 @@
     </div>
     <div>
       <input type="text" name="" id="" v-model="tarefa" placeholder="Insert your task">       
-      <button class="add" @click="adicionarTarefa">Add</button>
-      <button class="clear" @click="limparLis">Clear</button>
-      <button class="clearAll" @click="clearAll">Clear All</button>
+      <button class="add" @click="adicionarTarefa"><i class="bi bi-plus-circle"></i></button>
+      <button class="clear" @click="limparLis"><i class="bi bi-x-circle"></i></button>
+      <button class="clearAll" @click="clearAll"><i class="bi bi-calendar-x"></i></button>
     </div>
     <div v-if="tarefas.length === 0 ">
       <p class="normal">You don`t have any task</p>
@@ -98,7 +98,6 @@ export default {
     this.tarefas = []
     },
     clearAll() {
-      this.tarefa = ''
       this.inicial = ''
       this.final = ''
     }
