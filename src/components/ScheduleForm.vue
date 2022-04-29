@@ -31,7 +31,7 @@
           :key="index">
             <td>{{tarefa.nome}}</td>
             <td>{{tarefa.data}}</td>
-            <td><button @click="tarefas.splice(index, 1)">Remove</button></td>
+            <td><button @click="tarefas.splice(index, 1)" class="btn btn-danger"><i class="bi bi-trash"></i></button></td>
           </tr>
         </tbody>
       </table>
