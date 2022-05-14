@@ -64,6 +64,7 @@
 <script>
 import { mapState, mapMutations } from "vuex";
 import copy from "copy-to-clipboard";
+import Swal from "sweetalert2";
 // @ is an alias to /src
 export default {
   name: "Home",
@@ -137,14 +138,19 @@ export default {
               // return this.aCopiar;
             })
             .join("\n");
-          // copy(valorACopiar);
-          copy(valorACopiar, {
-            debug: true,
-            message: "Press #{key} to copy",
+          Swal.fire({
+            icon: "success",
+            text: "copiado com sucesso!",
+            title: copy(valorACopiar),
+            timer: 2000,
           });
         }
       } catch (error) {
-        console.log(error);
+        Swal.fire({
+          icon: "error",
+          text: error,
+          timer: 2000,
+        });
       }
     },
   },
