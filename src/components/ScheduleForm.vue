@@ -37,16 +37,22 @@
         You have: {{ tarefas.length }} task from
         {{ dataStorage.dataInicial }} to {{ dataStorage.dataFinal }}
       </p>
-      <table class="container">
+      <table class="table table-striped table-hover align-middle">
         <thead>
-          <tr>
-            <td>Nome</td>
-            <td>Data</td>
+          <tr class="color-table-text">
+            <td>N.º</td>
+            <td>TAREFA</td>
+            <td>INSERIDO EM</td>
             <td></td>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(tarefa, index) in tarefas" :key="index">
+          <tr
+            v-for="(tarefa, index) in tarefas"
+            :key="index"
+            class="table-info"
+          >
+            <td class="color-table-text">{{ ++index }}</td>
             <td>{{ tarefa.nome }}</td>
             <td>{{ tarefa.data }}</td>
             <td>
@@ -65,9 +71,11 @@
 import { mapState, mapMutations } from "vuex";
 import copy from "copy-to-clipboard";
 import Swal from "sweetalert2";
+import filters from "../mixins/filters.vue";
 // @ is an alias to /src
 export default {
   name: "Home",
+  mixins: [filters],
   data() {
     return {
       title: "Week task list",
@@ -202,5 +210,9 @@ span {
 .ativa {
   color: rgba(39, 185, 204, 0.856);
   font-size: 30px;
+}
+
+.color-table-text {
+  font-weight: bolder;
 }
 </style>
