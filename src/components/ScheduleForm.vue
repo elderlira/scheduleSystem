@@ -52,7 +52,7 @@
             :key="index"
             class="table-info"
           >
-            <td class="color-table-text">{{ ++index }}</td>
+            <td class="color-table-text">{{ index + 1 }}</td>
             <td>{{ tarefa.nome }}</td>
             <td>{{ tarefa.data }}</td>
             <td>
